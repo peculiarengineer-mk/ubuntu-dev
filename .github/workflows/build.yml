@@ -67,7 +67,11 @@ jobs:
       # Hub repo page so people can find and use it. Runs only on the default
       # branch (skipped for scheduled/forked runs that shouldn't rewrite docs).
       - name: Sync Docker Hub description
+        # Docs sync is best-effort: the description API needs an account-level
+        # token with Read/Write/Delete scope (repo-scoped tokens 403). Never let
+        # it fail the image build/push above.
         if: github.ref == 'refs/heads/main'
+        continue-on-error: true
         uses: peter-evans/dockerhub-description@v4
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
