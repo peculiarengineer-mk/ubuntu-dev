@@ -3,6 +3,13 @@
 A lean **Ubuntu 26.04 LTS** devcontainer base image with a standard dev toolset
 and a passwordless-sudo `vscode` user. Multi-arch (`amd64` / `arm64`).
 
+```bash
+docker pull peculiarengineer/ubuntu-dev:26.04
+```
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/peculiarengineer/ubuntu-dev)](https://hub.docker.com/r/peculiarengineer/ubuntu-dev)
+[![Image Size](https://img.shields.io/docker/image-size/peculiarengineer/ubuntu-dev/26.04)](https://hub.docker.com/r/peculiarengineer/ubuntu-dev/tags)
+
 ## What's inside
 
 - **Base:** `ubuntu:26.04`

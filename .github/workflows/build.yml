@@ -62,3 +62,16 @@ jobs:
           # above still ensures the base layer is refreshed when upstream moves.
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      # Publish the searchable short description + README overview to the Docker
+      # Hub repo page so people can find and use it. Runs only on the default
+      # branch (skipped for scheduled/forked runs that shouldn't rewrite docs).
+      - name: Sync Docker Hub description
+        if: github.ref == 'refs/heads/main'
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: ${{ env.IMAGE }}
+          short-description: "Lean Ubuntu 26.04 LTS devcontainer base — dev toolset, non-root sudo user, multi-arch amd64/arm64"
+          readme-filepath: ./README.md
