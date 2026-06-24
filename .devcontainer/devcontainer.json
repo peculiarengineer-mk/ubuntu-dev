@@ -1,0 +1,35 @@
+{
+  "name": "ubuntu-26.04-dev",
+
+  // Build from the local Dockerfile. To use the published image instead, swap
+  // the "build" block for:  "image": "peculiarengineer/ubuntu-dev:26.04"
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+
+  "remoteUser": "vscode",
+
+  // Layer extra tooling on top via Dev Container Features rather than baking it
+  // into the base image. Uncomment what you need:
+  "features": {
+    // "ghcr.io/devcontainers/features/node:1": {},
+    // "ghcr.io/devcontainers/features/python:1": {},
+    // "ghcr.io/devcontainers/features/go:1": {},
+    // "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    // "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+
+  // "postCreateCommand": "echo ready"
+}
